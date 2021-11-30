@@ -35,7 +35,7 @@ code {
   color: var(--white);
 }
 
-.display p {
+.value {
   margin-right: 12px;
 }
 

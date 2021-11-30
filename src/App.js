@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="calculator">
       <div className="display">
-        <span>{value}</span>
+        <span className="value">{value}</span>
       </div>
       <div className="row">
         <NumberButton handler={handleNumber} n={1} />
