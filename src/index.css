@@ -49,6 +49,8 @@ code {
   font-size: 60px;
   background-color: var(--mid-grey);
   color: var(--white);
+  padding: 0;
+  border: 1px solid var(--black);
 }
 
 .equals {
