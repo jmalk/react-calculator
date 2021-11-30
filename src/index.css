@@ -12,23 +12,37 @@ code {
     monospace;
 }
 
+:root {
+  --button-width: 100px;
+  --black: black;
+  --dark-grey: #666;
+  --mid-grey: #aaa;
+  --light-grey: #ccc;
+  --white: WhiteSmoke;
+  --accent: orange;
+}
+
 .calculator {
+  width: calc(var(--button-width) * 3);
   margin: 24px auto;
-  width: 400px;
-  border: 1px solid black;
+  background-color: black;
 }
 
 .display {
   font-size: 60px;
+  text-align: right;
+  background-color: var(--dark-grey);
+  color: var(--white);
 }
 
 .button {
   height: 80px;
-  width: 100px;
+  width: var(--button-width);
   font-size: 60px;
-  margin: 3px;
+  background-color: var(--mid-grey);
+  color: var(--white);
 }
 
 .equals {
-  background-color: orange;
+  background-color: var(--accent);
 }
