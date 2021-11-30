@@ -7,7 +7,11 @@ const Operators = {
 };
 
 function NumberButton({ handler, n }) {
-  return <button onClick={() => handler(n)}>{n}</button>;
+  return (
+    <button className="button" onClick={() => handler(n)}>
+      {n}
+    </button>
+  );
 }
 
 function App() {
@@ -49,8 +53,8 @@ function App() {
 
   return (
     <div className="calculator">
-      <div>
-        <p>{value}</p>
+      <div className="display">
+        <span>{value}</span>
       </div>
       <div className="row">
         <NumberButton handler={handleNumber} n={1} />
@@ -72,12 +76,18 @@ function App() {
 
       <div className="row">
         <NumberButton handler={handleNumber} n={0} />
-        <button onClick={handlePlus}>+</button>
-        <button onClick={handleMinus}>-</button>
+        <button className="button" onClick={handlePlus}>
+          +
+        </button>
+        <button className="button" onClick={handleMinus}>
+          -
+        </button>
       </div>
 
       <div className="row">
-        <button onClick={handleEquals}>=</button>
+        <button className="button" onClick={handleEquals}>
+          =
+        </button>
       </div>
     </div>
   );

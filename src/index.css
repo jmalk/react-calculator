@@ -17,3 +17,14 @@ code {
   width: 400px;
   border: 1px solid black;
 }
+
+.display {
+  font-size: 60px;
+}
+
+.button {
+  height: 80px;
+  width: 100px;
+  font-size: 60px;
+  margin: 3px;
+}
