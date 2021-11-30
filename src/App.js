@@ -20,6 +20,13 @@ function App() {
   const [operation, setOperation] = useState(null);
   const [waiting, setWaiting] = useState(false);
 
+  const handleAC = () => {
+    setValue(0);
+    setPrevious(0);
+    setOperation(null);
+    setWaiting(false);
+  };
+
   const handleNumber = (n) => {
     console.log(n);
     if (waiting) {
@@ -85,6 +92,9 @@ function App() {
       </div>
 
       <div className="row">
+        <button className="button" onClick={handleAC}>
+          AC
+        </button>
         <button className="equals button" onClick={handleEquals}>
           =
         </button>
