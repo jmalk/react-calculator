@@ -28,3 +28,7 @@ code {
   font-size: 60px;
   margin: 3px;
 }
+
+.equals {
+  background-color: orange;
+}

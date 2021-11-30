@@ -85,7 +85,7 @@ function App() {
       </div>
 
       <div className="row">
-        <button className="button" onClick={handleEquals}>
+        <button className="equals button" onClick={handleEquals}>
           =
         </button>
       </div>
