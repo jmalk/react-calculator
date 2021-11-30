@@ -35,6 +35,10 @@ code {
   color: var(--white);
 }
 
+.display p {
+  margin-right: 12px;
+}
+
 .button {
   height: 80px;
   width: var(--button-width);
