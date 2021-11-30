@@ -28,7 +28,6 @@ function App() {
   };
 
   const handleNumber = (n) => {
-    console.log(n);
     if (waiting) {
       setWaiting(false);
       setPrevious(value);
