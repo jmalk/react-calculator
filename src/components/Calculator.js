@@ -3,6 +3,7 @@ import { useState } from "react";
 const Operators = {
   PLUS: "PLUS",
   MINUS: "MINUS",
+  MULTIPLY: "MULTIPLY",
   EQUALS: "EQUALS",
 };
 
@@ -47,12 +48,20 @@ function Calculator() {
     setWaiting(true);
   };
 
+  const handleMultiply = () => {
+    setOperation(Operators.MULTIPLY);
+    setWaiting(true);
+  };
+
   const handleEquals = () => {
     if (operation === Operators.PLUS) {
       setValue(previous + value);
     }
     if (operation === Operators.MINUS) {
       setValue(previous - value);
+    }
+    if (operation === Operators.MULTIPLY) {
+      setValue(previous * value);
     }
     setOperation(null);
   };
@@ -92,6 +101,9 @@ function Calculator() {
       </div>
 
       <div className="row">
+        <button className="button" onClick={handleMultiply}>
+          X
+        </button>
         <button className="button" onClick={handleAC}>
           AC
         </button>
