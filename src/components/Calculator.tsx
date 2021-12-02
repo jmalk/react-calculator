@@ -1,13 +1,14 @@
 import { useState } from "react";
 
-const Operators = {
-  PLUS: "PLUS",
-  MINUS: "MINUS",
-  MULTIPLY: "MULTIPLY",
-  DIVIDE: "DIVIDE",
-};
+type Operation = "add" | "subtract" | "multiply" | "divide";
 
-function NumberButton({ handler, n }) {
+function NumberButton({
+  handler,
+  n,
+}: {
+  handler: (n: number) => void;
+  n: number;
+}) {
   return (
     <button className="button" onClick={() => handler(n)}>
       {n}
@@ -15,7 +16,13 @@ function NumberButton({ handler, n }) {
   );
 }
 
-function OperationButton({ handler, symbol }) {
+function OperationButton({
+  handler,
+  symbol,
+}: {
+  handler: () => void;
+  symbol: string;
+}) {
   return (
     <button className="button" onClick={handler}>
       {symbol}
@@ -26,7 +33,7 @@ function OperationButton({ handler, symbol }) {
 function Calculator() {
   const [value, setValue] = useState(0);
   const [previous, setPrevious] = useState(0);
-  const [operation, setOperation] = useState(null);
+  const [operation, setOperation] = useState<Operation | null>(null);
   const [waiting, setWaiting] = useState(false);
 
   const handleAC = () => {
@@ -36,7 +43,7 @@ function Calculator() {
     setWaiting(false);
   };
 
-  const handleNumber = (n) => {
+  const handleNumber = (n: number) => {
     if (waiting) {
       setWaiting(false);
       setPrevious(value);
@@ -46,22 +53,22 @@ function Calculator() {
     }
   };
 
-  const handleOperation = (operation) => {
+  const handleOperation = (operation: Operation) => {
     setOperation(operation);
     setWaiting(true);
   };
 
   const handleEquals = () => {
-    if (operation === Operators.PLUS) {
+    if (operation === "add") {
       setValue(previous + value);
     }
-    if (operation === Operators.MINUS) {
+    if (operation === "subtract") {
       setValue(previous - value);
     }
-    if (operation === Operators.MULTIPLY) {
+    if (operation === "multiply") {
       setValue(previous * value);
     }
-    if (operation === Operators.DIVIDE) {
+    if (operation === "divide") {
       setValue(previous / value);
     }
     setOperation(null);
@@ -77,10 +84,7 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={7} />
         <NumberButton handler={handleNumber} n={8} />
         <NumberButton handler={handleNumber} n={9} />
-        <OperationButton
-          handler={() => handleOperation(Operators.DIVIDE)}
-          symbol="/"
-        />
+        <OperationButton handler={() => handleOperation("divide")} symbol="/" />
       </div>
 
       <div className="row">
@@ -88,7 +92,7 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={5} />
         <NumberButton handler={handleNumber} n={6} />
         <OperationButton
-          handler={() => handleOperation(Operators.MULTIPLY)}
+          handler={() => handleOperation("multiply")}
           symbol="X"
         />
       </div>
@@ -98,7 +102,7 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={2} />
         <NumberButton handler={handleNumber} n={3} />
         <OperationButton
-          handler={() => handleOperation(Operators.MINUS)}
+          handler={() => handleOperation("subtract")}
           symbol="–"
         />
       </div>
@@ -111,10 +115,7 @@ function Calculator() {
         <button className="equals button" onClick={handleEquals}>
           =
         </button>
-        <OperationButton
-          handler={() => handleOperation(Operators.PLUS)}
-          symbol="+"
-        />
+        <OperationButton handler={() => handleOperation("add")} symbol="+" />
       </div>
     </div>
   );
