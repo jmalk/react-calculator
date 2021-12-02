@@ -5,7 +5,6 @@ const Operators = {
   MINUS: "MINUS",
   MULTIPLY: "MULTIPLY",
   DIVIDE: "DIVIDE",
-  EQUALS: "EQUALS",
 };
 
 function NumberButton({ handler, n }) {
