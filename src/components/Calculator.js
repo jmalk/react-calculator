@@ -62,10 +62,11 @@ function Calculator() {
       <div className="display">
         <span className="value">{value}</span>
       </div>
+
       <div className="row">
-        <NumberButton handler={handleNumber} n={1} />
-        <NumberButton handler={handleNumber} n={2} />
-        <NumberButton handler={handleNumber} n={3} />
+        <NumberButton handler={handleNumber} n={7} />
+        <NumberButton handler={handleNumber} n={8} />
+        <NumberButton handler={handleNumber} n={9} />
       </div>
 
       <div className="row">
@@ -75,9 +76,9 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={7} />
-        <NumberButton handler={handleNumber} n={8} />
-        <NumberButton handler={handleNumber} n={9} />
+        <NumberButton handler={handleNumber} n={1} />
+        <NumberButton handler={handleNumber} n={2} />
+        <NumberButton handler={handleNumber} n={3} />
       </div>
 
       <div className="row">
