@@ -91,7 +91,7 @@ function Calculator() {
         <button className="button" onClick={handleDelete}>
           ←
         </button>
-        <OperationButton handler={() => handleOperation("divide")} symbol="/" />
+        <OperationButton handler={() => handleOperation("divide")} symbol="÷" />
       </div>
 
       <div className="row">
@@ -100,7 +100,7 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={9} />
         <OperationButton
           handler={() => handleOperation("multiply")}
-          symbol="X"
+          symbol="×"
         />
       </div>
 
@@ -110,7 +110,7 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={6} />
         <OperationButton
           handler={() => handleOperation("subtract")}
-          symbol="–"
+          symbol="−"
         />
       </div>
 
