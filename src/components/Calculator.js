@@ -38,18 +38,8 @@ function Calculator() {
     }
   };
 
-  const handlePlus = () => {
-    setOperation(Operators.PLUS);
-    setWaiting(true);
-  };
-
-  const handleMinus = () => {
-    setOperation(Operators.MINUS);
-    setWaiting(true);
-  };
-
-  const handleMultiply = () => {
-    setOperation(Operators.MULTIPLY);
+  const handleOperation = (operation) => {
+    setOperation(operation);
     setWaiting(true);
   };
 
@@ -92,16 +82,25 @@ function Calculator() {
 
       <div className="row">
         <NumberButton handler={handleNumber} n={0} />
-        <button className="button" onClick={handlePlus}>
+        <button
+          className="button"
+          onClick={() => handleOperation(Operators.PLUS)}
+        >
           +
         </button>
-        <button className="button" onClick={handleMinus}>
+        <button
+          className="button"
+          onClick={() => handleOperation(Operators.MINUS)}
+        >
           -
         </button>
       </div>
 
       <div className="row">
-        <button className="button" onClick={handleMultiply}>
+        <button
+          className="button"
+          onClick={() => handleOperation(Operators.MULTIPLY)}
+        >
           X
         </button>
         <button className="button" onClick={handleAC}>
