@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Calculator
+
+https://friendly-wilson-13df15.netlify.app/
+
+A calculator made with React and deployed with Netlify.
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0dbbce96-8795-4f0b-9834-82689f1d6f09/deploy-status)](https://app.netlify.com/sites/friendly-wilson-13df15/deploys)
+
+# Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
