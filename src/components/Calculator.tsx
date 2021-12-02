@@ -43,6 +43,10 @@ function Calculator() {
     setWaiting(false);
   };
 
+  const handleDelete = () => {
+    setValue(Math.floor(value / 10));
+  };
+
   const handleNumber = (n: number) => {
     if (waiting) {
       setWaiting(false);
@@ -81,16 +85,19 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={7} />
-        <NumberButton handler={handleNumber} n={8} />
-        <NumberButton handler={handleNumber} n={9} />
+        <button className="button width-2" onClick={handleAC}>
+          AC
+        </button>
+        <button className="button" onClick={handleDelete}>
+          ←
+        </button>
         <OperationButton handler={() => handleOperation("divide")} symbol="/" />
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={4} />
-        <NumberButton handler={handleNumber} n={5} />
-        <NumberButton handler={handleNumber} n={6} />
+        <NumberButton handler={handleNumber} n={7} />
+        <NumberButton handler={handleNumber} n={8} />
+        <NumberButton handler={handleNumber} n={9} />
         <OperationButton
           handler={() => handleOperation("multiply")}
           symbol="X"
@@ -98,9 +105,9 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={1} />
-        <NumberButton handler={handleNumber} n={2} />
-        <NumberButton handler={handleNumber} n={3} />
+        <NumberButton handler={handleNumber} n={4} />
+        <NumberButton handler={handleNumber} n={5} />
+        <NumberButton handler={handleNumber} n={6} />
         <OperationButton
           handler={() => handleOperation("subtract")}
           symbol="–"
@@ -108,14 +115,17 @@ function Calculator() {
       </div>
 
       <div className="row">
+        <NumberButton handler={handleNumber} n={1} />
+        <NumberButton handler={handleNumber} n={2} />
+        <NumberButton handler={handleNumber} n={3} />
+        <OperationButton handler={() => handleOperation("add")} symbol="+" />
+      </div>
+
+      <div className="row">
         <NumberButton handler={handleNumber} n={0} />
-        <button className="button" onClick={handleAC}>
-          AC
-        </button>
-        <button className="equals button" onClick={handleEquals}>
+        <button className="equals button width-3" onClick={handleEquals}>
           =
         </button>
-        <OperationButton handler={() => handleOperation("add")} symbol="+" />
       </div>
     </div>
   );

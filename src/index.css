@@ -53,6 +53,14 @@ code {
   border: 1px solid var(--black);
 }
 
+.width-2 {
+  width: calc(2 * var(--button-width));
+}
+
+.width-3 {
+  width: calc(3 * var(--button-width));
+}
+
 .equals {
   background-color: var(--accent);
 }
