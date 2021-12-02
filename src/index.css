@@ -14,7 +14,7 @@ code {
 }
 
 :root {
-  --button-width: 100px;
+  --button-width: 80px;
   --button-height: calc(0.8 * var(--button-width));
   --display-height: calc(0.8 * var(--button-width));
   --black: black;
@@ -32,7 +32,7 @@ code {
 }
 
 .display {
-  font-size: 60px;
+  font-size: 52px;
   height: var(--display-height);
   line-height: var(--display-height);
   text-align: right;
@@ -47,7 +47,7 @@ code {
 .button {
   height: var(--button-height);
   width: var(--button-width);
-  font-size: 60px;
+  font-size: 40px;
   background-color: var(--mid-grey);
   color: var(--white);
   padding: 0;
