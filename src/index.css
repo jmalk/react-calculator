@@ -25,7 +25,7 @@ code {
 }
 
 .calculator {
-  width: calc(var(--button-width) * 3);
+  width: calc(var(--button-width) * 4);
   margin: 24px auto;
   background-color: var(--black);
 }

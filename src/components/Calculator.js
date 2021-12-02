@@ -66,28 +66,25 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={7} />
         <NumberButton handler={handleNumber} n={8} />
         <NumberButton handler={handleNumber} n={9} />
+        {/* Divide button */}
       </div>
 
       <div className="row">
         <NumberButton handler={handleNumber} n={4} />
         <NumberButton handler={handleNumber} n={5} />
         <NumberButton handler={handleNumber} n={6} />
+        <button
+          className="button"
+          onClick={() => handleOperation(Operators.MULTIPLY)}
+        >
+          X
+        </button>
       </div>
 
       <div className="row">
         <NumberButton handler={handleNumber} n={1} />
         <NumberButton handler={handleNumber} n={2} />
         <NumberButton handler={handleNumber} n={3} />
-      </div>
-
-      <div className="row">
-        <NumberButton handler={handleNumber} n={0} />
-        <button
-          className="button"
-          onClick={() => handleOperation(Operators.PLUS)}
-        >
-          +
-        </button>
         <button
           className="button"
           onClick={() => handleOperation(Operators.MINUS)}
@@ -97,19 +94,22 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <button
-          className="button"
-          onClick={() => handleOperation(Operators.MULTIPLY)}
-        >
-          X
-        </button>
+        <NumberButton handler={handleNumber} n={0} />
         <button className="button" onClick={handleAC}>
           AC
         </button>
         <button className="equals button" onClick={handleEquals}>
           =
         </button>
+        <button
+          className="button"
+          onClick={() => handleOperation(Operators.PLUS)}
+        >
+          +
+        </button>
       </div>
+
+      <div className="row"></div>
     </div>
   );
 }
