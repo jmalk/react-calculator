@@ -4,6 +4,7 @@ const Operators = {
   PLUS: "PLUS",
   MINUS: "MINUS",
   MULTIPLY: "MULTIPLY",
+  DIVIDE: "DIVIDE",
   EQUALS: "EQUALS",
 };
 
@@ -53,6 +54,9 @@ function Calculator() {
     if (operation === Operators.MULTIPLY) {
       setValue(previous * value);
     }
+    if (operation === Operators.DIVIDE) {
+      setValue(previous / value);
+    }
     setOperation(null);
   };
 
@@ -66,7 +70,12 @@ function Calculator() {
         <NumberButton handler={handleNumber} n={7} />
         <NumberButton handler={handleNumber} n={8} />
         <NumberButton handler={handleNumber} n={9} />
-        {/* Divide button */}
+        <button
+          className="button"
+          onClick={() => handleOperation(Operators.DIVIDE)}
+        >
+          /
+        </button>
       </div>
 
       <div className="row">
