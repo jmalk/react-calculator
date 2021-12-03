@@ -35,12 +35,16 @@ function Calculator() {
   const [previous, setPrevious] = useState(0);
   const [operation, setOperation] = useState<Operation | null>(null);
   const [waiting, setWaiting] = useState(false);
+  const [decimalDenominator, setDecimalDenominator] = useState<number | null>(
+    null
+  );
 
   const handleAC = () => {
     setValue(0);
     setPrevious(0);
     setOperation(null);
     setWaiting(false);
+    setDecimalDenominator(null);
   };
 
   const handleDelete = () => {
@@ -50,10 +54,22 @@ function Calculator() {
   const handleNumber = (n: number) => {
     if (waiting) {
       setWaiting(false);
+      setDecimalDenominator(null);
       setPrevious(value);
       setValue(n);
+    } else if (decimalDenominator) {
+      setValue(value + n / decimalDenominator);
+      // Once you start adding digits after a decimal point,
+      // each one is ten times smaller in value than the last.
+      setDecimalDenominator(decimalDenominator * 10);
     } else {
       setValue(value * 10 + n);
+    }
+  };
+
+  const handleDecimal = () => {
+    if (!decimalDenominator) {
+      setDecimalDenominator(10);
     }
   };
 
@@ -123,7 +139,10 @@ function Calculator() {
 
       <div className="row">
         <NumberButton handler={handleNumber} n={0} />
-        <button className="equals button width-3" onClick={handleEquals}>
+        <button className="button" onClick={handleDecimal}>
+          .
+        </button>
+        <button className="equals button width-2" onClick={handleEquals}>
           =
         </button>
       </div>

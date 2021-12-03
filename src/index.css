@@ -58,10 +58,6 @@ code {
   width: calc(2 * var(--button-width));
 }
 
-.width-3 {
-  width: calc(3 * var(--button-width));
-}
-
 .equals {
   background-color: var(--accent);
 }
