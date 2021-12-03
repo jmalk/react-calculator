@@ -4,6 +4,7 @@ Very advanced project management tool; a TODO list in Markdown.
 
 - [ ] Handle overflow. (e.g. 25/3 = 8.3333...)
 - [ ] Decimals.
+- [ ] Number key input.
 - [ ] Show previous operand (small) above current one.
 - [ ] Split out smaller components into their own files.
 - [ ] Re-theme.
