@@ -92,6 +92,8 @@ function Calculator() {
       setValue(previous / value);
     }
     setOperation(null);
+    setWaiting(true);
+    setDecimalDenominator(null);
   };
 
   return (
