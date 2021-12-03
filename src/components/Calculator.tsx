@@ -35,16 +35,14 @@ function Calculator() {
   const [previous, setPrevious] = useState(0);
   const [operation, setOperation] = useState<Operation | null>(null);
   const [waiting, setWaiting] = useState(false);
-  const [decimalDenominator, setDecimalDenominator] = useState<number | null>(
-    null
-  );
+  const [decimalFactor, setDecimalFactor] = useState<number | null>(null);
 
   const handleAC = () => {
     setValue(0);
     setPrevious(0);
     setOperation(null);
     setWaiting(false);
-    setDecimalDenominator(null);
+    setDecimalFactor(null);
   };
 
   const handleDelete = () => {
@@ -54,22 +52,22 @@ function Calculator() {
   const handleNumber = (n: number) => {
     if (waiting) {
       setWaiting(false);
-      setDecimalDenominator(null);
-      setPrevious(value);
+      setDecimalFactor(1);
+      setPrevious(decimalFactor ? value / decimalFactor : value);
       setValue(n);
-    } else if (decimalDenominator) {
-      setValue(value + n / decimalDenominator);
+    } else if (decimalFactor) {
+      setValue(value * 10 + n);
       // Once you start adding digits after a decimal point,
       // each one is ten times smaller in value than the last.
-      setDecimalDenominator(decimalDenominator * 10);
+      setDecimalFactor(decimalFactor * 10);
     } else {
       setValue(value * 10 + n);
     }
   };
 
   const handleDecimal = () => {
-    if (!decimalDenominator) {
-      setDecimalDenominator(10);
+    if (!decimalFactor) {
+      setDecimalFactor(1);
     }
   };
 
@@ -93,13 +91,15 @@ function Calculator() {
     }
     setOperation(null);
     setWaiting(true);
-    setDecimalDenominator(null);
+    setDecimalFactor(1);
   };
 
   return (
     <div className="calculator">
       <div className="display">
-        <span className="value">{value}</span>
+        <span className="value">
+          {decimalFactor ? value / decimalFactor : value}
+        </span>
       </div>
 
       <div className="row">
