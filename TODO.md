@@ -2,7 +2,6 @@
 
 Very advanced project management tool; a TODO list in Markdown.
 
-- [ ] Handle overflow. (e.g. 25/3 = 8.3333...)
 - [ ] Decimals.
 - [ ] Number key input.
 - [ ] Test with React Testing Library.
@@ -12,3 +11,4 @@ Very advanced project management tool; a TODO list in Markdown.
 - [ ] Percent button, maybe?
 - [ ] Learn about the M+/-, is that something worth including?
 - [x] Implement very advanced project management system for Calculator.
+- [x] Handle overflow. (e.g. 25/3 = 8.3333...)
