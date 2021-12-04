@@ -7,11 +7,17 @@ test("Calculator renders without crashing", () => {
   ReactDOM.render(<Calculator />, div);
 });
 
+const clickButton = (name: string) =>
+  fireEvent.click(screen.getByRole("button", { name }));
+
+const expectOutput = (text: string) =>
+  expect(screen.getByRole("status")).toHaveTextContent(text);
+
 test("Pressing 1 twice displays 11", async () => {
   render(<Calculator />);
 
-  fireEvent.click(screen.getByRole("button", { name: "1" }));
-  fireEvent.click(screen.getByRole("button", { name: "1" }));
+  clickButton("1");
+  clickButton("1");
 
-  expect(screen.getByRole("status")).toHaveTextContent("11");
+  expectOutput("11");
 });
