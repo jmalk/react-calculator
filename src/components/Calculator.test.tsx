@@ -23,3 +23,11 @@ test("Pressing 1 twice displays 11", async () => {
 
   expectOutput("11");
 });
+
+test("1+1= displays 2", () => {
+  render(<Calculator />);
+
+  clickButtons(["1", "+", "1", "="]);
+
+  expectOutput("2");
+});
