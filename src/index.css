@@ -38,6 +38,8 @@ code {
   text-align: right;
   background-color: var(--dark-grey);
   color: var(--white);
+  overflow: auto;
+  padding-left: 16px;
 }
 
 .value {
