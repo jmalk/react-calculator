@@ -2,7 +2,7 @@
 
 Very advanced project management tool; a TODO list in Markdown.
 
-- [ ] Decimals.
+- [ ] Decimals. Try https://www.npmjs.com/package/decimal.js-light
 - [ ] Number key input.
 - [ ] Test with React Testing Library.
 - [ ] Show previous operand (small) above current one.
