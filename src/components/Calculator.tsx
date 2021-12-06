@@ -1,6 +1,30 @@
 import { useState } from "react";
+import { Decimal } from "decimal.js-light";
 
 type Operation = "add" | "subtract" | "multiply" | "divide";
+
+const add = (a: string, b: string): string => {
+  return new Decimal(a).plus(new Decimal(b)).toString();
+};
+
+const subtract = (a: string, b: string): string => {
+  return new Decimal(a).minus(new Decimal(b)).toString();
+};
+
+const multiply = (a: string, b: string): string => {
+  return new Decimal(a).mul(new Decimal(b)).toString();
+};
+
+const divide = (a: string, b: string): string => {
+  return new Decimal(a).dividedBy(new Decimal(b)).toString();
+};
+
+const operations: Record<Operation, (a: string, b: string) => string> = {
+  add,
+  subtract,
+  multiply,
+  divide,
+};
 
 function NumberButton({
   handler,
@@ -69,19 +93,8 @@ function Calculator() {
   };
 
   const handleEquals = () => {
-    const prev = parseFloat(previous);
-    const val = parseFloat(value);
-    if (operation === "add") {
-      setValue(`${prev + val}`);
-    }
-    if (operation === "subtract") {
-      setValue(`${prev - val}`);
-    }
-    if (operation === "multiply") {
-      setValue(`${prev * val}`);
-    }
-    if (operation === "divide") {
-      setValue(`${prev / val}`);
+    if (operation) {
+      setValue(operations[operation](previous, value));
     }
     setOperation(null);
     setWaiting(true);
