@@ -3,7 +3,6 @@
 Very advanced project management tool; a TODO list in Markdown.
 
 - [ ] Decimals. Try https://www.npmjs.com/package/decimal.js-light
-- [ ] Handle overflow. (e.g. 25/3 = 8.3333...)
 - [ ] Number key input.
 - [ ] Test with React Testing Library.
 - [ ] Show previous operand (small) above current one.
