@@ -1,13 +1,37 @@
 import { useState } from "react";
+import { Decimal } from "decimal.js-light";
 
 type Operation = "add" | "subtract" | "multiply" | "divide";
+
+const add = (a: string, b: string): string => {
+  return new Decimal(a).plus(new Decimal(b)).toString();
+};
+
+const subtract = (a: string, b: string): string => {
+  return new Decimal(a).minus(new Decimal(b)).toString();
+};
+
+const multiply = (a: string, b: string): string => {
+  return new Decimal(a).mul(new Decimal(b)).toString();
+};
+
+const divide = (a: string, b: string): string => {
+  return new Decimal(a).dividedBy(new Decimal(b)).toString();
+};
+
+const operations: Record<Operation, (a: string, b: string) => string> = {
+  add,
+  subtract,
+  multiply,
+  divide,
+};
 
 function NumberButton({
   handler,
   n,
 }: {
-  handler: (n: number) => void;
-  n: number;
+  handler: (n: string) => void;
+  n: string;
 }) {
   return (
     <button className="button" onClick={() => handler(n)}>
@@ -31,45 +55,35 @@ function OperationButton({
 }
 
 function Calculator() {
-  const [value, setValue] = useState(0);
-  const [previous, setPrevious] = useState(0);
+  const [value, setValue] = useState("");
+  const [previous, setPrevious] = useState("0");
   const [operation, setOperation] = useState<Operation | null>(null);
   const [waiting, setWaiting] = useState(false);
-  const [decimalDenominator, setDecimalDenominator] = useState<number | null>(
-    null
-  );
 
   const handleAC = () => {
-    setValue(0);
-    setPrevious(0);
+    setValue("0");
+    setPrevious("0");
     setOperation(null);
     setWaiting(false);
-    setDecimalDenominator(null);
   };
 
   const handleDelete = () => {
-    setValue(Math.floor(value / 10));
+    setValue(value.slice(0, -1));
   };
 
-  const handleNumber = (n: number) => {
+  const handleNumber = (n: string) => {
     if (waiting) {
       setWaiting(false);
-      setDecimalDenominator(null);
       setPrevious(value);
       setValue(n);
-    } else if (decimalDenominator) {
-      setValue(value + n / decimalDenominator);
-      // Once you start adding digits after a decimal point,
-      // each one is ten times smaller in value than the last.
-      setDecimalDenominator(decimalDenominator * 10);
     } else {
-      setValue(value * 10 + n);
+      setValue(`${value}${n}`);
     }
   };
 
   const handleDecimal = () => {
-    if (!decimalDenominator) {
-      setDecimalDenominator(10);
+    if (!value.includes(".")) {
+      setValue(`${value}.`);
     }
   };
 
@@ -79,21 +93,11 @@ function Calculator() {
   };
 
   const handleEquals = () => {
-    if (operation === "add") {
-      setValue(previous + value);
-    }
-    if (operation === "subtract") {
-      setValue(previous - value);
-    }
-    if (operation === "multiply") {
-      setValue(previous * value);
-    }
-    if (operation === "divide") {
-      setValue(previous / value);
+    if (operation) {
+      setValue(operations[operation](previous, value));
     }
     setOperation(null);
     setWaiting(true);
-    setDecimalDenominator(null);
   };
 
   return (
@@ -113,9 +117,9 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={7} />
-        <NumberButton handler={handleNumber} n={8} />
-        <NumberButton handler={handleNumber} n={9} />
+        <NumberButton handler={handleNumber} n="7" />
+        <NumberButton handler={handleNumber} n="8" />
+        <NumberButton handler={handleNumber} n="9" />
         <OperationButton
           handler={() => handleOperation("multiply")}
           symbol="×"
@@ -123,9 +127,9 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={4} />
-        <NumberButton handler={handleNumber} n={5} />
-        <NumberButton handler={handleNumber} n={6} />
+        <NumberButton handler={handleNumber} n="4" />
+        <NumberButton handler={handleNumber} n="5" />
+        <NumberButton handler={handleNumber} n="6" />
         <OperationButton
           handler={() => handleOperation("subtract")}
           symbol="−"
@@ -133,14 +137,14 @@ function Calculator() {
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={1} />
-        <NumberButton handler={handleNumber} n={2} />
-        <NumberButton handler={handleNumber} n={3} />
+        <NumberButton handler={handleNumber} n="1" />
+        <NumberButton handler={handleNumber} n="2" />
+        <NumberButton handler={handleNumber} n="3" />
         <OperationButton handler={() => handleOperation("add")} symbol="+" />
       </div>
 
       <div className="row">
-        <NumberButton handler={handleNumber} n={0} />
+        <NumberButton handler={handleNumber} n="0" />
         <button className="button" onClick={handleDecimal}>
           .
         </button>

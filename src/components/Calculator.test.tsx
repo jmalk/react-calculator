@@ -57,3 +57,21 @@ test("Pressing 9-5= displays 4", () => {
 
   expectOutput("4");
 });
+
+test("Pressing 1.2×3= displays 3.6", () => {
+  render(<Calculator />);
+
+  // Note the '×' is a times symbol not a regular x.
+  // You may need to copy-paste it specifically!
+  clickButtons(["1", ".", "2", "×", "3", "="]);
+
+  expectOutput("3.6");
+});
+
+test("Pressing 6.8÷4= displays 1.7", () => {
+  render(<Calculator />);
+
+  clickButtons(["6", ".", "8", "÷", "4", "="]);
+
+  expectOutput("1.7");
+});
