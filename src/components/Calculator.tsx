@@ -90,7 +90,7 @@ function Calculator() {
   return (
     <div className="calculator">
       <div className="display">
-        <span className="value">{value}</span>
+        <output className="value">{value}</output>
       </div>
 
       <div className="row">
